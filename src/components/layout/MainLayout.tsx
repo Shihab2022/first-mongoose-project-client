@@ -3,9 +3,9 @@ import { Layout, Menu, MenuProps } from "antd";
 const { Header, Content, Footer, Sider } = Layout;
 
 const items: MenuProps["items"] = [
-  { key: 1, label: "1st" },
-  { key: 2, label: "2st" },
-  { key: 3, label: "3st" },
+  { key: 1, label: "Dashboard" },
+  { key: 2, label: "Profile" },
+  { key: 3, label: "User Management" },
 ];
 
 const MainLayout = () => {
