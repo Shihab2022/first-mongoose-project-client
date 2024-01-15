@@ -1,7 +1,9 @@
+import MainLayout from "./components/layout/MainLayout";
+
 function App() {
   return (
     <>
-      <p>Hello this is PH university</p>
+      <MainLayout />
     </>
   );
 }
