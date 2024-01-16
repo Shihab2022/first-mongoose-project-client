@@ -61,6 +61,8 @@ export const adminPaths = path.reduce((acc: TPath[], item) => {
   return acc;
 }, []);
 
+//* Functional way for create dynamic admin site bar
+
 export const adminSidebarItems = path.reduce((acc: TAdminSideBar[], item) => {
   if (item.path && item.name) {
     acc.push({
