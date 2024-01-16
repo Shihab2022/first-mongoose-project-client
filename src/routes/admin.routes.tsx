@@ -103,3 +103,30 @@ export const adminSidebarItems = path.reduce((acc: TAdminSideBar[], item) => {
 //     element: <CreateFaculty />,
 //   },
 // ];
+
+//! Hard coded value for admin site bar
+
+// const items: MenuProps["items"] = [
+//   {
+//     key: "Dashboard",
+//     label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
+//   },
+//   {
+//     key: "User Management",
+//     label: "User Management",
+//     children: [
+//       {
+//         key: "Create Admin",
+//         label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
+//       },
+//       {
+//         key: "Create Faculty",
+//         label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
+//       },
+//       {
+//         key: "Create Student",
+//         label: <NavLink to="/admin/create-student">Create Student</NavLink>,
+//       },
+//     ],
+//   },
+// ];
