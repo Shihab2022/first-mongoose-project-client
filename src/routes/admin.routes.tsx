@@ -3,9 +3,15 @@ import CreateStudent from "../pages/admin/CreateStudent";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import { ReactNode } from "react";
+import { NavLink } from "react-router-dom";
 type TPath = {
   path: string;
   element: ReactNode;
+};
+type TAdminSideBar = {
+  key: string;
+  label: ReactNode;
+  children?: TAdminSideBar[];
 };
 
 const path = [
@@ -55,6 +61,25 @@ export const adminPaths = path.reduce((acc: TPath[], item) => {
   return acc;
 }, []);
 
+export const adminSidebarItems = path.reduce((acc: TAdminSideBar[], item) => {
+  if (item.path && item.name) {
+    acc.push({
+      key: item.name,
+      label: <NavLink to={`/admin/${item.path}`}>{item.name}</NavLink>,
+    });
+  }
+  if (item.children) {
+    acc.push({
+      key: item.name,
+      label: item.name,
+      children: item.children.map((child) => ({
+        key: child.name,
+        label: <NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>,
+      })),
+    });
+  }
+  return acc;
+}, []);
 //! Hard coded value for routes
 // export const adminPaths = [
 //   {
