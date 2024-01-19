@@ -6,19 +6,20 @@ import { Button } from "antd";
 const Login = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      userId: "a-002",
-      password: "admin123",
+      userId: "2030010001",
+      password: "@shihab@",
     },
   });
 
   const [loginUser, { data, error }] = useLoginMutation();
 
+  console.log("data", data);
   const onSubmit = (userData: { userId: any; password: any }) => {
     const userInfo = {
       id: userData.userId,
       password: userData.password,
     };
-    // loginUser(userInfo);
+    loginUser(userInfo);
     console.log("userInfo", userInfo);
   };
 
