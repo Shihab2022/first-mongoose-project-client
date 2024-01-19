@@ -27,3 +27,14 @@ npm i jwt-decode
 ```
 npm i redux-persist
 ```
+
+_If we use redux-persist then it gives an warning to solve this warning we can see this documentation_
+[use-with-redux-persist](https://redux-toolkit.js.org/usage/usage-guide#use-with-redux-persist)
+
+_Only we can use this code on our redux middleware_
+
+```
+serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      }
+```
