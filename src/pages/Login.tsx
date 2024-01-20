@@ -8,6 +8,7 @@ import { TUser, setUser } from "../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import PHUFrom from "../components/from/PHUFrom";
+import PHUInput from "../components/from/PHUInput";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -46,12 +47,10 @@ const Login = () => {
     <>
       <PHUFrom onSubmit={onSubmit}>
         <div>
-          <label htmlFor="id">Id :</label>
-          <input type="text" id="id" {...register("userId")} />
+          <PHUInput type="text" name="userId" label="Id : " />
         </div>
         <div>
-          <label htmlFor="password">Id :</label>
-          <input type="text" id="password" {...register("password")} />
+          <PHUInput type="text" name="password" label="Password : " />
         </div>
         <Button htmlType="submit">Login</Button>
       </PHUFrom>
