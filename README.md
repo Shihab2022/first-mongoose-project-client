@@ -46,3 +46,19 @@ serializableCheck: {
 ```
 npm i sonner
 ```
+
+# for send token form front end to backend we use this
+
+```
+   prepareHeaders: (Headers, { getState }) => {
+        const token = (getState() as RootState).auth.token
+        if (token) {
+            Headers.set("authorization", `${token}`)
+        }
+        return Headers
+    }
+```
+
+_This is provide redux we can see this documentation_
+
+[prepareheaders](https://redux-toolkit.js.org/rtk-query/api/fetchBaseQuery#prepareheaders)
