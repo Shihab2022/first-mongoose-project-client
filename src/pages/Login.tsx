@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { FieldValues, useForm } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
-import { Button } from "antd";
+import { Button, Row } from "antd";
 import { verifyToken } from "../utils/verifyToken";
 import { useAppDispatch } from "../redux/hooks";
 import { TUser, setUser } from "../redux/features/auth/authSlice";
@@ -24,27 +24,27 @@ const Login = () => {
 
   const onSubmit = async (userData: FieldValues) => {
     console.log("userData", userData);
-    // const toastId = toast.loading("Logging in ");
-    // try {
-    //   const userInfo = {
-    //     id: userData.userId,
-    //     password: userData.password,
-    //   };
-    //   const res = await loginUser(userInfo).unwrap();
-    //   if (res.success) {
-    //     const token = res.data.accessToken;
-    //     const user = verifyToken(token) as TUser;
-    //     dispatch(setUser({ user, token }));
-    //     toast.success("Logged in", { id: toastId, duration: 2000 });
-    //     navigate(`/${user.role}/dashboard`);
-    //   }
-    // } catch (e) {
-    //   toast.success("Something wrong", { id: toastId, duration: 2000 });
-    // }
+    const toastId = toast.loading("Logging in ");
+    try {
+      const userInfo = {
+        id: userData.userId,
+        password: userData.password,
+      };
+      const res = await loginUser(userInfo).unwrap();
+      if (res.success) {
+        const token = res.data.accessToken;
+        const user = verifyToken(token) as TUser;
+        dispatch(setUser({ user, token }));
+        toast.success("Logged in", { id: toastId, duration: 2000 });
+        navigate(`/${user.role}/dashboard`);
+      }
+    } catch (e) {
+      toast.success("Something wrong", { id: toastId, duration: 2000 });
+    }
   };
 
   return (
-    <>
+    <Row justify="center" align="middle" style={{ height: "100vh" }}>
       <PHUFrom onSubmit={onSubmit}>
         <div>
           <PHUInput type="text" name="userId" label="Id : " />
@@ -54,7 +54,7 @@ const Login = () => {
         </div>
         <Button htmlType="submit">Login</Button>
       </PHUFrom>
-    </>
+    </Row>
   );
 };
 
