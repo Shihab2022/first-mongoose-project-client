@@ -9,15 +9,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import PHUFrom from "../components/from/PHUFrom";
 import PHUInput from "../components/from/PHUInput";
+const defaultValues = {
+  userId: "2030010001",
+  password: "@shihab@",
+};
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      userId: "2030010001",
-      password: "@shihab@",
-    },
-  });
+
   const navigate = useNavigate();
 
   const [loginUser] = useLoginMutation();
@@ -45,7 +44,7 @@ const Login = () => {
 
   return (
     <Row justify="center" align="middle" style={{ height: "100vh" }}>
-      <PHUFrom onSubmit={onSubmit}>
+      <PHUFrom onSubmit={onSubmit} defaultValues={defaultValues}>
         <div>
           <PHUInput type="text" name="userId" label="Id : " />
         </div>
