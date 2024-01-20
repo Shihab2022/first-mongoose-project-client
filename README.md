@@ -38,3 +38,11 @@ serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       }
 ```
+
+# For toast here use sonner
+
+[sonner](https://sonner.emilkowal.ski/getting-started)
+
+```
+npm i sonner
+```
