@@ -7,6 +7,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { TUser, setUser } from "../redux/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import PHUFrom from "../components/from/PHUFrom";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -21,28 +22,29 @@ const Login = () => {
   const [loginUser] = useLoginMutation();
 
   const onSubmit = async (userData: FieldValues) => {
-    const toastId = toast.loading("Logging in ");
-    try {
-      const userInfo = {
-        id: userData.userId,
-        password: userData.password,
-      };
-      const res = await loginUser(userInfo).unwrap();
-      if (res.success) {
-        const token = res.data.accessToken;
-        const user = verifyToken(token) as TUser;
-        dispatch(setUser({ user, token }));
-        toast.success("Logged in", { id: toastId, duration: 2000 });
-        navigate(`/${user.role}/dashboard`);
-      }
-    } catch (e) {
-      toast.success("Something wrong", { id: toastId, duration: 2000 });
-    }
+    console.log("userData", userData);
+    // const toastId = toast.loading("Logging in ");
+    // try {
+    //   const userInfo = {
+    //     id: userData.userId,
+    //     password: userData.password,
+    //   };
+    //   const res = await loginUser(userInfo).unwrap();
+    //   if (res.success) {
+    //     const token = res.data.accessToken;
+    //     const user = verifyToken(token) as TUser;
+    //     dispatch(setUser({ user, token }));
+    //     toast.success("Logged in", { id: toastId, duration: 2000 });
+    //     navigate(`/${user.role}/dashboard`);
+    //   }
+    // } catch (e) {
+    //   toast.success("Something wrong", { id: toastId, duration: 2000 });
+    // }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <PHUFrom onSubmit={onSubmit}>
         <div>
           <label htmlFor="id">Id :</label>
           <input type="text" id="id" {...register("userId")} />
@@ -52,7 +54,7 @@ const Login = () => {
           <input type="text" id="password" {...register("password")} />
         </div>
         <Button htmlType="submit">Login</Button>
-      </form>
+      </PHUFrom>
     </>
   );
 };
